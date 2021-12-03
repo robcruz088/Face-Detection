@@ -1,4 +1,5 @@
 import cv2
+from random import randrange
 
 # Loading pre-trained data on frontal face
 
@@ -17,14 +18,12 @@ face_coordinates = face_cascade.detectMultiScale(gray_img)
 
 # draw rectangle for the faces - image, top left coord, x+width/y+height , line color (BGR), line thicc
 # loop through list of face coordinates for multiple individuals
-i = 0
-while i < len(face_coordinates):
-    (x,y,w,h) = face_coordinates[i]
-    cv2.rectangle(img, (x,y),(x+w,y+h),(0,255,0),5)
-    i+=1
 
+for i in face_coordinates:
+    (x, y, w, h) = i
+    cv2.rectangle(img, (x,y),(x+w,y+h),(randrange(128,256),randrange(128,256),randrange(128,256)),5)
 
-
+# Display image
 cv2.imshow("There's federal agents outside my house", img)
 cv2.waitKey()
 
