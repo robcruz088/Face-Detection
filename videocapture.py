@@ -23,7 +23,7 @@ while True:
     gray_vid = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # Detect Faces using rectangles - x, y, width, height
-    face_coordinates = face_cascade.detectMultiScale(gray_vid)
+    face_coordinates = face_cascade.detectMultiScale(gray_vid, 1.05,4,minSize=(100,100))
 
     for i in face_coordinates:
         (x, y, w, h) = i
